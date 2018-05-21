@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/standard_xx_margin"
+    android:layout_marginRight="@dimen/standard_xx_margin"
+    android:layout_marginTop="@dimen/standard_xx_margin"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/tv_country_selector_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_name_str"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_size1" />
+
+    <LinearLayout
+        android:id="@+id/lin_country_selector_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_country_selector_name"
+        android:layout_marginTop="@dimen/standard_sss_small_margin"
+        android:background="@drawable/shape_login_edit_selector"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:id="@+id/lin_country_selector"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_country_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingBottom="@dimen/standard_s_small_margin"
+                android:paddingLeft="@dimen/standard_s_small_margin"
+                android:paddingTop="@dimen/standard_s_small_margin"
+                android:src="@mipmap/icon_uk" />
+
+            <TextView
+                android:id="@+id/tv_country_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/standard_micro_margin"
+                android:text="@string/default_country_code_str"
+                android:textColor="@color/colorMain"
+                android:textSize="@dimen/text_size1" />
+
+            <View
+                android:layout_width="@dimen/standard_line_size"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/standard_s_small_margin"
+                android:background="@color/colorSmallLine" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/ed_country_selector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/in_put_phone_str"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/standard_s_small_margin"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorText"
+            android:textCursorDrawable="@drawable/shape_edit_cursor_color"
+            android:textSize="@dimen/text_size2" />
+    </LinearLayout>
+</RelativeLayout>

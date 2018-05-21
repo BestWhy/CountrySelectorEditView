@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--文字尺寸-->
+    <dimen name="text_size_1">8sp</dimen>
+    <dimen name="text_size0">10sp</dimen>
+    <dimen name="text_size1">12sp</dimen>
+    <dimen name="text_size2">14sp</dimen>
+    <dimen name="text_size3">16sp</dimen>
+    <dimen name="text_size4">18sp</dimen>
+    <dimen name="text_size5">20sp</dimen>
+    <dimen name="text_size6">22sp</dimen>
+    <dimen name="text_size7">24sp</dimen>
+    <dimen name="text_size8">26sp</dimen>
+    <dimen name="text_size10">30sp</dimen>
+    <dimen name="text_size13">36sp</dimen>
+
+    <!--边距尺寸-->
+    <dimen name="standard_s_micro_margin">2dp</dimen>
+    <dimen name="standard_micro_margin">4dp</dimen>
+    <dimen name="standard_sss_small_margin">6dp</dimen>
+    <dimen name="standard_ss_small_margin">8dp</dimen>
+    <dimen name="standard_s_small_margin">10dp</dimen>
+    <dimen name="standard_small_margin">12dp</dimen>
+    <dimen name="standard_middle_margin">14dp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="standard_x_margin">18dp</dimen>
+    <dimen name="standard_xx_margin">20dp</dimen>
+    <dimen name="standard_big_margin">24dp</dimen>
+    <dimen name="standard_xxx_big_margin">32dp</dimen>
+    <dimen name="standard_bigger_margin">48dp</dimen>
+    <dimen name="standard_xxx_large_margin">64dp</dimen>
+
+    <!--分割线-->
+    <dimen name="small_line_size">0.5dp</dimen>
+    <dimen name="standard_line_size">0.8dp</dimen>
+
+    <!--button 圆角-->
+    <dimen name="standard_circular_size">8dp</dimen>
+</resources>
