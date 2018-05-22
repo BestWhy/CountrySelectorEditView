@@ -12,4 +12,5 @@
 最后就是国家选择了
 ![](https://raw.githubusercontent.com/BestWhy/CountrySelectorEditView/master/Screenshots/2.jpg)
 
-具体用法请看代码.有需要的可以download和start
+添加右侧drawable,可以清除输入内容
+![](https://raw.githubusercontent.com/BestWhy/CountrySelectorEditView/master/Screenshots/3.jpg)
