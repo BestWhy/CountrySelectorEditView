@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <view.CountrySelectorEditView
         app:drawableRight="@mipmap/icon_clear"
         android:id="@+id/country_selector"
