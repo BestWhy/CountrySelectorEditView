@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -16,11 +18,12 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.countryselectoreditview.Country;
+import adapter.CountrySelectorAdapter;
+import bean.Country;
+
 import com.countryselectoreditview.MainActivity;
 import com.countryselectoreditview.R;
 
@@ -32,10 +35,6 @@ import com.countryselectoreditview.R;
  ******************************************/
 public class CountrySelectorEditView extends FrameLayout implements View.OnClickListener, AdapterView.OnItemClickListener, View.OnFocusChangeListener {
 
-    /**
-     * 用于下来展示的ListView
-     */
-    private CountrySelectorListView mListView;
     /**
      * editHint
      */
@@ -68,9 +67,40 @@ public class CountrySelectorEditView extends FrameLayout implements View.OnClick
      * 用户名
      */
     private EditText mEditUserName;
+    /**
+     * popup集合
+     */
     private CountrySelectorListView mCountrySelectorListView;
+    /**
+     * popup
+     */
     private PopupWindow mPopupWindow;
+    /**
+     * 右侧图片
+     */
+    private Drawable mDrawable;
 
+    /**
+     * edieView Drawable点击
+     */
+    private EditText.OnTouchListener mEditOnTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            // et.getCompoundDrawables()得到一个长度为4的数组，分别表示左右上下四张图片
+            Drawable drawable = mEditUserName.getCompoundDrawables()[2];
+            //如果右边没有图片，不再处理
+            if (drawable == null)
+                return false;
+            //如果不是按下事件，不再处理
+            if (event.getAction() != MotionEvent.ACTION_UP)
+                return false;
+            if (event.getX() > mEditUserName.getWidth() - mEditUserName.getPaddingRight() - drawable.getIntrinsicWidth()) {
+                mEditUserName.setText("");
+                return true;
+            }
+            return false;
+        }
+    };
 
     public CountrySelectorEditView(@NonNull Context context) {
         this(context, null);
@@ -87,10 +117,10 @@ public class CountrySelectorEditView extends FrameLayout implements View.OnClick
 
         mCountrySelectorListView = (CountrySelectorListView) LayoutInflater.from(context).inflate(R.layout.country_selector_list_layout, null);
 
-        mListView = (CountrySelectorListView) LayoutInflater.from(context).inflate(R.layout.country_selector_list_layout, null);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CountrySelectorEditText, defStyleAttr, 0);
         mCountryMode = ta.getInt(R.styleable.CountrySelectorEditText_countrySelectorMode, 0);
         mHint = ta.getString(R.styleable.CountrySelectorEditText_hint);
+        mDrawable = ta.getDrawable(R.styleable.CountrySelectorEditText_drawableRight);
         ta.recycle();
 
     }
@@ -115,6 +145,11 @@ public class CountrySelectorEditView extends FrameLayout implements View.OnClick
             mEditUserName.setHint(mHint);
         }
 
+        if (mDrawable != null) {
+            mDrawable.setBounds(0, 0, mDrawable.getMinimumWidth(), mDrawable.getMinimumHeight());
+            mEditUserName.setCompoundDrawables(null, null, mDrawable, null);
+            mEditUserName.setOnTouchListener(mEditOnTouchListener);
+        }
 
         mLinSelector.setOnClickListener(this);
         mCountrySelectorListView.setOnItemClickListener(this);
@@ -191,7 +226,7 @@ public class CountrySelectorEditView extends FrameLayout implements View.OnClick
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        MainActivity.MyAdapter adapter = (MainActivity.MyAdapter) mCountrySelectorListView.getAdapter();
+        CountrySelectorAdapter adapter = (CountrySelectorAdapter) mCountrySelectorListView.getAdapter();
 
         Country country = (Country) adapter.getItem(position);
         mTvCountry.setText(country.countryCode);
@@ -219,5 +254,6 @@ public class CountrySelectorEditView extends FrameLayout implements View.OnClick
             mEditUserName.setHintTextColor(getResources().getColor(R.color.colorEditNorText));
         }
     }
+
 
 }

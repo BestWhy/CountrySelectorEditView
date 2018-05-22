@@ -1,4 +1,4 @@
-package com.countryselectoreditview;
+package bean;
 
 /******************************************
  * 类描述：

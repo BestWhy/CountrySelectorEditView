@@ -6,5 +6,6 @@
             <enum name="wrap_content" value="1" />
         </attr>
         <attr name="hint" format="string|reference" />
+        <attr name="drawableRight" format="reference" />
     </declare-styleable>
 </resources>

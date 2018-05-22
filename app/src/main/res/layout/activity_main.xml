@@ -9,6 +9,7 @@
 
 
     <view.CountrySelectorEditView
+        app:drawableRight="@mipmap/icon_clear"
         android:id="@+id/country_selector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
