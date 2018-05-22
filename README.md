@@ -14,3 +14,36 @@
 
 添加右侧drawable,可以清除输入内容
 ![](https://raw.githubusercontent.com/BestWhy/CountrySelectorEditView/master/Screenshots/003.jpg)
+
+>具体用法
+```
+<view.CountrySelectorEditView
+  app:drawableRight="@mipmap/icon_clear"
+  android:id="@+id/country_selector"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  app:countrySelectorMode="wrap_content"
+  app:hint="@string/in_put_phone_str" />
+```
+
+```
+private void initView() {
+        mCountrySelector = findViewById(R.id.country_selector);
+        for (int i = 0; i < 10; i++) {
+            Country country = new Country();
+            if (i % 2 == 0) {
+                country.countryCode = "+44";
+                country.countryName = "GBA";
+
+            } else {
+                country.countryCode = "+31";
+                country.countryName = "FRA";
+            }
+            mArrayList.add(country);
+        }
+        //Adapter 就是基本的ListViewAdapter
+        CountrySelectorAdapter adapter = new CountrySelectorAdapter(this, mArrayList);
+        mCountrySelector.setCountryListAdapter(adapter);
+    }
+```
+
